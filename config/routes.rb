@@ -9,7 +9,9 @@ Rails.application.routes.draw do
   scope module: "client", path: "", as: "" do
     devise_for :accounts, path: "", path_names: { sign_in: "login", sign_out: "logout" }
 
-    resources :posts, param: :slug, only: :show
+    resources :posts, param: :slug, only: :show do
+      get :draft, on: :member
+    end
 
     resources :comments, only: [:create, :destroy, :edit] do
       collection do
@@ -23,15 +25,11 @@ Rails.application.routes.draw do
     root "dashboard#index"
     devise_for :admins, path: "", path_names: { sign_in: "login", sign_out: "logout" }
     resources :posts, param: :slug do
-      member do
-        delete :delete_image_attachment
-      end
+      delete :delete_image_attachment, on: :member
     end
 
     resources :categories, param: :slug do
-      member do
-        delete :delete_image_attachment
-      end
+      delete :delete_image_attachment, on: :member
     end
   end
 end

@@ -39,7 +39,7 @@
   <td>
     <div class="post__slug">
       <span><img src="<%= asset_path("icon/link.svg") %>" alt="icon-slug"></span>
-      <span><%= post.slug %></span>
+      <span><%= post.slug_html %></span>
     </div>
     <div class="post__slug">
       <span><img src="<%= asset_path("icon/tag-2.svg") %>" alt="icon-slug"></span>
@@ -55,6 +55,14 @@
     </div>
   <td>
     <div class="post__action d-none">
+      <% if post.hidden? %>
+        <div class="action-edit">
+          <%= link_to draft_post_path(post.slug) do %>
+            <span><img src="<%= asset_path("icon/eye.svg") %>" alt="icon-eye"></span>
+          <% end %>
+        </div>
+      <% end %>
+     
       <div class="action-edit">
         <%= link_to edit_admin_post_path(post.slug) do %>
           <span><img src="<%= asset_path("icon/update.svg") %>" alt="icon-update"></span>

@@ -1,0 +1,25 @@
+<% if @subcomments.present? %>
+  <% @subcomments.each do |subcomment| %>
+    $("#sub_comment_<%= @current_comment.id %>").append("<%= escape_javascript render('client/comments/subcomment', {comment: subcomment, class_parrent_div: 'pl-5 pt-3'}) %>");
+  <% end %>
+
+  $("#sub_comment_<%= @current_comment.id %>").append("<%= escape_javascript render 'client/comments/comment_form',
+                                        { url_action: create_subcomment_comments_path(parent_id: @current_comment.id),
+                                          class_input: "sub_comment_input_#{@current_comment.id}",
+                                          class_parrent_div: "pl-5 pt-0",
+                                          class_d_none: "d-none"
+                                        }
+                                        %>")
+  $(".sub_comment_<%= @current_comment.id %>").remove();
+  $(".reply_comment_<%= @current_comment.id %>").remove();
+<% else %>
+  $("#sub_comment_<%= @current_comment.id %>").append("<%= escape_javascript render 'client/comments/comment_form',
+                                        { url_action: create_subcomment_comments_path(parent_id: @current_comment.id),
+                                          class_input: "sub_comment_input_#{@current_comment.id}",
+                                          class_parrent_div: "pl-5 pt-0",
+                                          class_d_none: "d-none"
+                                        }
+                                        %>")
+  $(".reply_comment_<%= @current_comment.id %>").remove();
+<% end %>
+

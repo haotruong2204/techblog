@@ -1,0 +1,3 @@
+$("#comment_post_<%= @comment.post_id %>").html("<%= j render 'client/posts/content_comment', post: @comment.post %>");
+$(".type_comment_<%= @comment.post_id %>").val("");
+$(".type_comment_<%= @comment.post_id %>").attr("placeholder", "Chém gió đi bạn ơi ...");

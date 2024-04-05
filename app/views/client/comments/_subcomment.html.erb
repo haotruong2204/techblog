@@ -1,0 +1,25 @@
+<div class="content-comment mb-4 pl-5 pt-1" id="sub_comment_<%= comment.id %>">
+  <div class="div-content">
+    <div class="lh-1">
+      <%= image_tag comment.account.photo_url %>
+    </div>
+    <div class="ml-8 lh-1 f-1 bg-comment">
+      <div class="lh-1 mb-3">
+        <strong class="name-admin"><%= comment.account.full_name %>
+          <% if comment.account.admin? %>
+            <span><i data-feather="gitlab"></i></span>
+          <% end %>
+        </strong>
+        <span class="time">- <%= comment.created_at.strftime(Settings.time.formats) %></span>
+          <% if account_signed_in? %>
+            <% if comment.account.id == current_account.id || current_account.admin? %>
+              <%= link_to comment_path(comment), method: :delete, data: { confirm: "Bạn có chắc chắn muốn xóa?" }, local: false do %>
+                <span>xóa</span>
+              <% end %>
+            <% end %>
+          <% end %>
+      </div>
+      <span class="text-gray-90"><%= comment.content %></span>
+    </div>
+  </div>
+</div>

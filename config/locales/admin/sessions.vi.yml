@@ -1,0 +1,8 @@
+vi:
+  admin:
+    sessions:
+      new:
+        password: "Mật khẩu"
+        login_form: "Form"
+        remember_me: "Ghi nhớ mật khẩu"
+        submit: "Đăng nhập"

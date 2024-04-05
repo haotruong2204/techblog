@@ -1,0 +1,17 @@
+<div class="modal-delete d-none" id="modal-delete-category" data-controller="category">
+  <div class="modal-delete__centered">
+    <div class="modal-content">
+      <div class="modal-content__header">
+        <span>Bạn có chắc chắn muốn xóa danh mục này?</span>
+      </div>
+      <div class="modal-content__confirm">
+        <div class="modal-content__confirm--cancel" data-action="click->category#closeModal">
+          <span>Hủy</span>
+        </div>
+        <div class="modal-content__confirm--apply" data-action="click->category#removeCategory">
+          <span>Xóa</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

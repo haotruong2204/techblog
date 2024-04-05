@@ -1,0 +1,23 @@
+<% content_for :body_class, "unauthenticate" %>
+
+<div class="box-login">
+  <div class="logo">
+    <%= image_tag("logo.svg", alt: "logo") %>
+  </div>
+  <%= form_for(resource, as: resource_name, url: session_path(resource_name), class: "form-login", data: {turbo: "false"}) do |f| %>
+    <div class="form-login__input">
+      <label><%= t "admin.sessions.new.email" %></label>
+      <%= f.text_field :email, autofocus: true,
+        placeholder: "Nhập email" %>
+    </div>
+    <div class="form-login__input">
+      <label><%= t "admin.sessions.new.password" %></label>
+      <%= f.password_field :password, placeholder: "Nhập mật khẩu" %>
+    </div>
+    <button class="form-login__submit" type="submit"><%= t("admin.sessions.new.submit") %></button>
+  <% end %>
+</div>
+
+<div class="copyright">
+  <span>2024 © haotruong.dev - All Rights Reserved.</span>
+</div>

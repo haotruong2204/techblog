@@ -1,0 +1,15 @@
+<% if @comment.errors.any? %>
+  $(".sub_comment_input_<%= @comment_parent.id %>").closest(".box-comment__form").after(
+    `<span class="alert-error">
+      câu chém gió của bạn vừa bị né, hãy chém lại nào.
+    </span>`
+  );
+<% else %>
+  <% if @subcomment_parent.present? %>
+    $("#sub_comment_<%= @subcomment_parent.id %>").after("<%= escape_javascript render 'client/comments/subcomment', {comment: @comment, class_parrent_div: 'pl-5 pt-3'} %>");
+  <% else %>
+    $(".sub_comment_input_<%= @comment_parent.id %>").closest(".box-comment").before("<%= escape_javascript render 'client/comments/subcomment', {comment: @comment, class_parrent_div: 'pl-5 pt-3'} %>");
+  <% end %>
+  $(".sub_comment_input_<%= @comment_parent.id%>").val("");
+  $(".sub_comment_input_<%= @comment_parent.id %>").attr("placeholder", "Chém gió đi bạn ơi ...");
+<% end %>

@@ -1,0 +1,60 @@
+<div class="main__action">
+  <div class="block-search">
+    <%= search_form_for @q, url: admin_posts_path, html: { class: "form-search" } do |f| %>
+      <%= f.search_field :title_cont, class: "form-search__field", placeholder: "Tìm kiếm bài viết" %>
+      <%= f.button :button, type: :submit, class: "form-search__submit" do %>
+        <img src="<%= asset_path("icon/search.svg") %>" alt="icon-search">
+      <% end %>
+    <% end %>
+  </div>
+  <div class="block-create">
+    <a href="<%= new_admin_post_path %>">
+      <img src="<%= asset_path("icon/plus-square.svg") %>" alt="icon-search">
+      <span>Thêm bài viết</span>
+    </a>
+  </div>
+</div>
+
+<% if @posts.exists? %>
+  <div class="data-list" data-post-target="post">
+    <div class="data-list__main">
+      <table class="table data-list__posts">
+        <thead>
+          <tr>
+            <th class="checkmark-all">
+              <label class="table__label">
+                <input type="checkbox" class="checkbox-mark">
+                <span class="checkmark"></span>
+              </label>
+            </th>
+            <th>Ảnh bìa</th>
+            <th>
+              <span>Thông tin bài viết</span>
+            </th>
+            <th>
+              <span>Đường dẫn, Tags, Danh mục</span>
+            </th>
+            <th>
+              <span>Lượt xem</span>
+            </th>
+            <th>Thao tác</th>
+          </tr>
+        </thead>
+        <tbody>
+          <%= render @posts %>
+        </tbody>
+      </table>
+      <div class="pagination">
+        <%= render partial: 'shared/pagination', locals: {pagy: @pagy} %>
+      </div>
+    </div>
+  </div>
+<% else %>
+  <div class="no-data">
+    <div class="no-data__main">
+      <span>Không có bài viết nào.</span>
+    </div>
+  </div>
+<% end %>
+
+<%= render "admin/posts/modals/delete_modal" %>

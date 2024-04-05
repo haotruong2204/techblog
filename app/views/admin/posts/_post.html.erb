@@ -1,0 +1,68 @@
+<tr class="post"
+  data-controller="post"
+  data-action="mouseenter->post#showAction mouseleave->post#hideAction"
+>
+  <td>
+    <label class="table__label">
+      <input type="checkbox" class="checkbox-mark checkmark-id">
+      <span class="checkmark"></span>
+    </label>
+  </td>
+  <td>
+    <div class="post__image">
+      <% if post.cover_image.present? %>
+        <img src="<%= ENV['S3_URL_PREFIX'] %><%= post.cover_image.key %>" alt="" class="size-80">
+      <% else %>
+        <img src="<%= asset_path("80x80.png") %>" alt="icon-default">
+      <% end %>
+    </div>
+  </td>
+  <td>
+    <div class="post__info">
+      <div class="post-title">
+        <span><%= post.title %></span> <%= raw "<span>hidden</span>" if post.hidden? %>
+      </div>
+      <div class="post-author">
+        <span><img src="<%= asset_path("icon/user-single.svg") %>" alt="icon-user"></span>
+        <span><%= post.admin.full_name %></span>
+      </div>
+      <div class="post-created">
+        <span><img src="<%= asset_path("icon/clock.svg") %>" alt="icon-clock"></span>
+        <span><%= format_date(post.created_at) %></span>
+      </div>
+      <div class="post-updated">
+        <span><img src="<%= asset_path("icon/edit.svg") %>" alt="icon-edit"></span>
+        <span><%= format_date(post.updated_at) %></span>
+      </div>
+    </div>
+  </td>
+  <td>
+    <div class="post__slug">
+      <span><img src="<%= asset_path("icon/link.svg") %>" alt="icon-slug"></span>
+      <span><%= post.slug %></span>
+    </div>
+    <div class="post__slug">
+      <span><img src="<%= asset_path("icon/tag-2.svg") %>" alt="icon-slug"></span>
+    </div>
+    <div class="post__slug">
+      <span><img src="<%= asset_path("icon/folder.svg") %>" alt="icon-slug"></span>
+      <span><%= post.category&.title %></span>
+    </div>
+  </td>
+  <td>
+    <div class="post__view">
+      <span><%= post.view_count %></span>
+    </div>
+  <td>
+    <div class="post__action d-none">
+      <div class="action-edit">
+        <%= link_to edit_admin_post_path(post.slug) do %>
+          <span><img src="<%= asset_path("icon/update.svg") %>" alt="icon-update"></span>
+        <% end %>
+      </div>
+      <div class="action-delete" data-action="click->post#openModal" data-slug="<%= post.slug %>">
+        <span><img src="<%= asset_path("icon/delete.svg") %>" alt="icon-delete"></span>
+      </div>
+    </div>
+  </td>
+</tr>

@@ -1,0 +1,91 @@
+<%= simple_form_for [:admin, @category], url: @category.persisted? ? admin_category_path(slug: @category.slug) : admin_categories_path, html: { class: "block-create__form", data: { turbo: false } } do |f| %>
+  <div class="fields">
+    <div class="fields__left">
+      <div class="fields-top">
+        <div class="field">
+          <label for="title" class="form-label">Tiêu đề</label>
+          <%= f.input :title, as: :string,
+            input_html: {
+              value: f.object.title, id: "title", 
+              autocomplete: "off", 
+              placeholder: "e.g. Tiêu đề danh mục" }, label: false %>
+        </div>
+      </div>
+
+      <div class="fields-seo" data-controller="post">
+        <div class="title">
+          <h3>SEO website</h3>
+          <p>
+            thêm tiều đề hoặc mô tả bài viết để google nhận diện bài viết tốt hơn
+          </p>
+        </div>
+
+        <div class="field">
+          <label for="seo-title" class="form-label">Tiêu đề danh mục</label>
+          <%= f.input :seo_title, as: :string,
+            input_html: {
+              value: f.object.seo_title, id: "seo-title", 
+              autocomplete: "off" }, label: false %>
+        </div>
+
+        <div class="field">
+          <label for="seo-description" class="form-label">Mô tả</label>
+          <%= f.input :seo_description, as: :text,
+            input_html: {
+              value: f.object.seo_description, id: "seo-description",
+              autocomplete: "off", class: "custom",
+              rows: 4 }, label: false %>
+        </div>
+        
+        <div class="field position">
+          <label for="seo-url" class="form-label">URL and handle</label>
+          <%= f.input :slug, as: :string,
+            input_html: {
+              value: f.object.slug, id: "seo-url",
+              autocomplete: "off", placeholder: "e.g. example-post-url-123" }, label: false %>
+          <span data-action="click->post#changeSlug" class="get-slug" >Tạo slug</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="fields__right">
+      <div class="fields-top">
+        <div class="field" data-controller="upload">
+          <label for="feature-image" class="form-label">Ảnh bìa</label>
+          <div class="field__image"
+            <% if f.object.image_url.present? %>
+              style='background-image: url("<%= ENV['S3_URL_PREFIX'] %><%= f.object.image_url.key %>"); background-size:100% 100%'
+            <% end %>
+          >
+            <% if f.object.image_url.present?  %>
+              <div class="remove-img" data-href="<%= delete_image_attachment_admin_category_path(@category.image_url.id) %>" data-action="click->upload#handleRemoveFileAjax">
+                <span><img src="<%= asset_path("icon/remove.svg") %>" alt="icon-remove"></span>
+              </div>
+            <% else %>
+              <div class="remove-img d-none" data-action="click->upload#handleRemoveFile">
+                <span><img src="<%= asset_path("icon/remove.svg") %>" alt="icon-remove"></span>
+              </div>
+            <% end %>
+
+            <div class="block-add-img <%= 'd-none' if f.object.image_url.present? %>">
+              <img src="<%= asset_path("icon/upload.svg") %>" alt="icon-upload">
+              <p class="image-title">
+                <span>Tải file</span>
+              </p>
+              <p class="image-intro">hoặc kéo thả để tải lên</p>
+              <%= f.input :image_url, as: :file, input_html: { id: "feature-image", title: "", accept: ".png,.jpg,.jpeg", 
+                data: { action: "dragover->upload#handleDragOver drop->upload#handleFileSelect change->upload#handleLoadFile"} }, label: false %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="btns-control">
+    <%= link_to admin_categories_path, class: "none-decoration" do %>
+      <button class="btns-control__cancel" type="button">Hủy</button>
+    <% end %>
+    <%= f.submit 'Lưu', class: "btns-control__save"%>
+  </div>
+<% end %>

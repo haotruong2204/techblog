@@ -20,5 +20,8 @@ module Techblog
     config.assets.paths << Rails.root.join("app", "assets", "images")
     config.assets.paths << Rails.root.join("app", "assets", "fonts")
     config.encoding = "utf-8"
+    config.autoload_paths += %w(#{config.root}/app/models/ckeditor)
+    config.active_storage.variant_processor = :mini_magick
+    config.active_job.queue_adapter = :sidekiq
   end
 end

@@ -1,0 +1,17 @@
+<% if account_signed_in? %>
+  <div class="box-comment <%= class_parrent_div %>">
+    <div class="box-comment__form">
+      <div class="box-comment__avatar">
+        <%= image_tag current_account.photo_url %>
+      </div>
+      <%= form_for :comment, url: url_action, method: :post, remote: true, data: { turbo: false } do |f| %>
+        <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+        <%= f.text_field :content, class: class_input, placeholder:"Chém gió đi bạn ơi ..." %>
+      <% end %>
+    </div>
+  </div>
+<% else %>
+  <%= button_to account_google_oauth2_omniauth_authorize_path, method: :post, data: {turbo: "false"}, class: class_d_none do %>
+    Đăng nhập để góp gió
+  <% end %>
+<% end %>

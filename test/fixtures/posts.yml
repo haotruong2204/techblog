@@ -1,0 +1,35 @@
+# == Schema Information
+#
+# Table name: posts
+#
+#  id              :bigint           not null, primary key
+#  content         :text(65535)
+#  cover_image     :string(255)
+#  description     :text(65535)
+#  published_at    :datetime
+#  readtime        :integer
+#  seo_description :text(65535)
+#  seo_title       :string(255)
+#  slug            :string(255)
+#  status          :integer          default("hidden")
+#  title           :string(255)
+#  view_count      :integer          default(0)
+#  created_at      :datetime         not null
+#  updated_at      :datetime         not null
+#  admin_id        :integer
+#  category_id     :integer
+#
+# Indexes
+#
+#  index_posts_on_slug  (slug) UNIQUE
+#
+
+# This model initially had no columns defined. If you add columns to the
+# model remove the "{}" from the fixture names and add the columns immediately
+# below each fixture, per the syntax in the comments below
+#
+one: {}
+# column: value
+#
+two: {}
+# column: value

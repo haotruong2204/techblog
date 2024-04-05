@@ -1,0 +1,39 @@
+<div class="content-comment mb-20" id="sub_comment_<%= comment.id %>">
+  <div class="div-content">
+    <div class="lh-1">
+      <%= image_tag comment.account.photo_url %>
+    </div>
+    <div class="ml-8 lh-1 f-1 bg-comment">
+      <div class="lh-1 mb-3">
+        <strong class="name-admin"><%= comment.account.full_name %>
+          <% if comment.account.admin? %>
+            <span><i data-feather="gitlab"></i></span>
+          <% end %>
+        </strong>
+        <span class="time">- <%= comment.created_at.strftime(Settings.time.formats) %></span>
+      </div>
+      <span class="text-gray-90"><%= comment.content %></span>
+    </div>
+  </div>
+
+  <% if account_signed_in? %>
+    <div class="lh-1 mb-4 pl-5">
+      <%= link_to show_subcomment_comments_path(comment_id: comment.id), local: false,
+        class: "reply reply_comment_#{comment.id}" do %>
+        <span>Trả lời</span>
+      <% end %>
+      <% if comment.account.id == current_account.id || current_account.admin? %>
+        <%= link_to comment_path(comment), method: :delete, data: { confirm: "Bạn có chắc chắn muốn xóa?" }, local: false do %>
+          <span>xóa</span>
+        <% end %>
+      <% end %>
+    </div>
+  <% end %>
+
+
+  <% if comment.subcomments.size != 0 %>
+    <%= link_to show_subcomment_comments_path(comment_id: comment.id), class: "pl-5 custom-subcomment sub_comment_#{comment.id}", local: false do %>
+      <i data-feather="corner-down-right"></i>&nbspcó <%= comment.subcomments.size %> câu trả lời
+    <% end %>
+  <% end %>
+</div>

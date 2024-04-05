@@ -45,9 +45,6 @@ gem "bootsnap", require: false
 # Use Sass to process CSS
 gem "sass-rails"
 
-# Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
-# gem "image_processing", "~> 1.2"
-
 group :development, :test do
   gem "pry-byebug"
   gem "pry-rails"
@@ -76,3 +73,46 @@ end
 
 # Environment variables
 gem "dotenv-rails"
+
+# Authentication & async send mail with devise
+gem "devise"
+gem "devise-async"
+gem "omniauth"
+gem "omniauth-rails_csrf_protection"
+gem "omniauth-google-oauth2"
+
+# Schema in model
+gem "annotate"
+
+# Render error fields
+gem "simple_form"
+
+# Strip attribute before commit
+gem "strip_attributes"
+
+# SVG
+gem "nokogiri"
+
+# Slug
+gem "friendly_id", "~> 5.4.0"
+
+# Paginate
+gem "pagy", "~> 7.0"
+
+# Search
+gem "ransack"
+
+# background jobs
+gem "sidekiq", "~> 6.5", ">= 6.5.7"
+gem "sidekiq-status"
+
+# Config
+gem "config"
+
+# Editor
+gem "ckeditor"
+gem "mini_magick"
+gem "image_processing", "~> 1.2"
+
+# Upload file to S3 AWS
+gem "aws-sdk-s3", "~> 1"

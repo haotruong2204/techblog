@@ -1,0 +1,11 @@
+vi:
+  activerecord:
+    errors: &errors
+      format: "%{attribute} %{message}."
+      messages:
+        blank: "%{attribute} không thể bỏ trống."
+  activemodel:
+    errors: &errors
+      format: "%{attribute} %{message}"
+      messages:
+        blank: "%{attribute} không thể bỏ trống."

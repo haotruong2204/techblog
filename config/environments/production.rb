@@ -22,7 +22,7 @@ Rails.application.configure do
 
   # Disable serving static files from the `/public` folder by default since
   # Apache or NGINX already handles this.
-  config.public_file_server.enabled = ENV["RAILS_SERVE_STATIC_FILES"].present?
+  config.public_file_server.enabled = true
 
   # Compress CSS using a preprocessor.
   # config.assets.css_compressor = :sass
@@ -38,7 +38,7 @@ Rails.application.configure do
   # config.action_dispatch.x_sendfile_header = "X-Accel-Redirect" # for NGINX
 
   # Store uploaded files on the local file system (see config/storage.yml for options).
-  config.active_storage.service = :local
+  config.active_storage.service = :amazon
 
   # Mount Action Cable outside main process or domain.
   # config.action_cable.mount_path = nil
@@ -90,4 +90,23 @@ Rails.application.configure do
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
+
+  # email config
+  config.action_mailer.perform_caching = false
+  config.action_mailer.perform_deliveries = true
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.default_url_options = { host: ENV['MAIL_HOST'] }
+  config.action_mailer.smtp_settings = {
+    user_name:      ENV['SENDMAIL_USERNAME'],
+    password:       ENV['SENDMAIL_PASSWORD'],
+    domain:         ENV['MAIL_HOST'],
+    address:        ENV['MAIL_SERVER_ADDRESS'],
+    port:           ENV['MAIL_SERVER_PORT'],
+    authentication: :plain,
+    enable_starttls_auto: true
+  }
+ 
+  Rails.application.configure do
+    config.cache_store = :redis_cache_store, { url: ENV.fetch("REDIS_URL", "redis://localhost:6379/1") }
+  end
 end

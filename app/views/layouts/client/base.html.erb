@@ -1,16 +1,82 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Techblog</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="Cache-control" content="public">
+    <meta name="author" content="Hảo Trương">
+    <title><%= yield(:title) %> | Blog của Hảo</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="content-language" content="vi" />
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+    <meta name="description" content="<%= yield(:description) %>">
+    <meta name="Keywords" content="blog của hảo">
+    <meta name="robots" content="noindex, nofollow">
+    <meta name="googlebot" content="noindex,nofollow">
+    <meta name="msnbot" content="all,index,follow">
+    <meta property="fb:app_id" content="" /> 
+    <meta property="og:title" content="<%= yield(:title) %>">
+    <meta property="og:url" content="https://hoatruong.dev<%= yield(:url) %>" />
+    <meta property="og:image" content="<%= yield(:image).present? ? "https://hoatruong.dev#{yield(:image)}" : "https://hoatruong.dev#{asset_path("rails.jpg")}" %>">
+    <meta property="og:description" content="<%= yield(:description) %>">
+    <link rel="canonical" href="https://hoatruong.dev/" />
+    <%= favicon_link_tag asset_path("favicon.png"), rel: "icon", type: "image/x-icon" %>
+    <%= javascript_importmap_tags %>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
-    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
-    <%= javascript_importmap_tags %>
+    <%= stylesheet_link_tag "application", media: "all", "data-turbolinks-track": "reload" %>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inconsolata:400,700&amp;display=swap&amp;subset=vietnamese">
   </head>
-
   <body>
-    <%= yield %>
+    <div class="button_container">
+      <div class="name_container">
+        <%= image_tag("icon/close2.svg", alt: "icon close") %>
+      </div>
+      <span id="line_one"></span>
+      <span id="line_two"></span>
+    </div>
+    <div class="menu mobile">
+      <nav>
+        <ul>
+          <li>
+            <% if account_signed_in? %>
+              <span>Chào, <%= current_account.full_name %>!</span>
+              <%= link_to destroy_account_session_path, class: "logout" do %>
+                <%= image_tag("icon/log-out.svg", alt: "icon logout") %>
+                <span>Đăng xuất</span>
+              <% end %>
+            <% else %>
+              <%= button_to account_google_oauth2_omniauth_authorize_path, method: :post, data: {turbo: "false"}, class: "login" do %>
+                Đăng nhập với Google
+              <% end %>
+            <% end %>
+          </li>
+        </ul>
+      </nav>
+      <span class="division_line"></span>
+    </div>
+    <%= render "layouts/client/sidebar" %>
+    <div class="main">
+      <div class="page-top">
+        <div class="nav">
+          <ul>
+            <li>
+              <% if account_signed_in? %>
+                <span>Chào, <%= current_account.full_name %>!</span>
+                <%= link_to destroy_account_session_path, class: "logout" do %>
+                  <%= image_tag("icon/log-out-2.svg", alt: "icon logout") %>
+                  <span>Đăng xuất</span>
+                <% end %>
+              <% else %>
+                <%= button_to account_google_oauth2_omniauth_authorize_path, method: :post, data: {turbo: "false"}, class: "login" do %>
+                  Đăng nhập với Google
+                <% end %>
+              <% end %>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <%= yield %>
+    </div>
   </body>
 </html>

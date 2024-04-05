@@ -13,6 +13,7 @@
 #  seo_description :text(65535)
 #  seo_title       :string(255)
 #  slug            :string(255)
+#  slug_html       :string(255)
 #  status          :integer          default("hidden")
 #  title           :string(255)
 #  view_count      :integer          default(0)
@@ -43,6 +44,8 @@ class Post < ApplicationRecord
     where("created_at > ? AND created_at < ?", Time.zone.now.beginning_of_month, Time.zone.now.end_of_month).size
   }
 
+  before_save :should_generate_slug_html
+
   class << self
     def ransackable_attributes _auth_object = nil
       %w[title description]
@@ -55,5 +58,11 @@ class Post < ApplicationRecord
 
     ip_view_posts.create(ip_address:)
     increment! :view_count
+  end
+
+  private
+
+  def should_generate_slug_html
+    self.slug_html = "#{slug}.html"
   end
 end

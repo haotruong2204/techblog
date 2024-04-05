@@ -455,12 +455,13 @@ a:hover {
 
 .post {
   background-color: #FFF;
-  margin: 15px 15px 15px 45px;
+  margin: 15px 15px 20px 45px;
   max-width: 600px;
 }
 
 .post p {
   line-height: 1.5em;
+  margin: 4px 0
 }
 
 .post blockquote {
@@ -504,7 +505,7 @@ a:hover {
 }
 
 .post .post-content {
-  margin: 12px 0
+  margin: 4px 0
 }
 
 .post .post-content img {
@@ -618,7 +619,7 @@ a:hover {
 }
 
 .post .post-footer {
-  padding: 8px 0;
+  padding: 4px 0;
   border-bottom: 1px solid #e3e3e3
 }
 
@@ -693,6 +694,7 @@ a:hover {
 
 .post .post-description {
   color: #008000;
+  padding: 8px 0;
 }
 
 .pagination {
@@ -1222,7 +1224,7 @@ a.btn {
     padding: 0 5px
   }
   .post .post-content p {
-    margin-bottom: 0;
+    margin: 4px 0;
   }
   .post .post-content h3:before,
   .post .post-content h4:before {
@@ -1465,4 +1467,8 @@ a.logout img{
 .size-100 {
   width: 100%;
   height: 100%;
+}
+
+.size-10 {
+  width: 10%;
 }

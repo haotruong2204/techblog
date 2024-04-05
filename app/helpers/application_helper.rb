@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 module ApplicationHelper
+  require "nokogiri"
+
   include Pagy::Frontend
 
   FLASH_TYPE = {
@@ -18,5 +20,10 @@ module ApplicationHelper
 
   def format_date date
     date.strftime(Settings.time.formats)
+  end
+
+  def extract_image_urls_from_content content
+    doc = Nokogiri::HTML(content)
+    doc.css("img").map { |img| img["src"] }
   end
 end

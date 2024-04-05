@@ -5,3 +5,20 @@
 #
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
+
+# 100.times do |i|
+#   Post.create(
+#     title: "Post #{i}",
+#     description: "Description #{i}",
+#     content: "Content #{i}",
+#     published_at: Time.zone.now,
+#     readtime: 10,
+#     seo_description: "SEO Description #{i}",
+#     seo_title: "SEO Title #{i}",
+#     slug: "slug-#{i}",
+#     status: :visible,
+#     view_count: 0,
+#     admin_id: 1,
+#     category_id: 1
+#   )
+# end

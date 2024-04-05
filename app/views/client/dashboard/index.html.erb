@@ -15,6 +15,11 @@
           <div class="post-content">
             <p><%= post.description %></p>
           </div>
+          <div class="post-banner">
+            <% extract_image_urls_from_content(post.content).take(8).each do |src| %>
+              <%= image_tag src, class: "size-10" %>
+            <% end %>
+          </div>
           <div class="post-footer">
             <div class="meta">
               <div class="info">

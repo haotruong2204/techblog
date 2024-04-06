@@ -1,5 +1,5 @@
 <%= provide :title, @post.title %>
-<%= provide :url, post_path(@post) %>
+<%= provide :url, post_path(@post.slug) %>
 <%= provide :description, @post.description %>
 <%= provide :image, url_for(@post.cover_image) if @post.cover_image.persisted? %>
 

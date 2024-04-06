@@ -1,7 +1,8 @@
-<%= provide :title, @post.title %>
-<%= provide :url, post_path(@post.slug) %>
-<%= provide :description, @post.description %>
+<%= provide :title, @post.seo_title || @post.title %>
+<%= provide :url, post_path(@post.slug_html) %>
+<%= provide :description, @post.seo_description || @post.description %>
 <%= provide :image, url_for(@post.cover_image) if @post.cover_image.persisted? %>
+<%= provide :type, "article" %>
 
 <div class="autopagerize_page_element">
   <div class="content">

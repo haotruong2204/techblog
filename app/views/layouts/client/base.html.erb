@@ -10,7 +10,7 @@
     <meta http-equiv="content-language" content="vi" />
     <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
     <meta name="description" content="<%= yield(:description) %>">
-    <meta name="Keywords" content="blog của hảo">
+    <meta name="Keywords" content="tech blog, rails, ec2, aws, html, css, javascript, reactjs">
     <meta name="robots" content="noindex, nofollow">
     <meta name="googlebot" content="noindex,nofollow">
     <meta name="msnbot" content="all,index,follow">
@@ -19,6 +19,7 @@
     <meta property="og:url" content="https://haotruong.dev<%= yield(:url) %>" />
     <meta property="og:image" content="<%= yield(:image).present? ? "https://haotruong.dev#{yield(:image)}" : "https://haotruong.dev#{asset_path("rails.jpg")}" %>">
     <meta property="og:description" content="<%= yield(:description) %>">
+    <meta property="og:type" content="<%= yield(:type) %>">
     <link rel="canonical" href="https://haotruong.dev/" />
     <%= favicon_link_tag asset_path("favicon.png"), rel: "icon", type: "image/x-icon" %>
     <%= javascript_importmap_tags %>

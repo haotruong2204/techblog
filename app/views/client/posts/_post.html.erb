@@ -1,0 +1,26 @@
+<div class="post animated fadeInDown">
+  <div class="post-title">
+    <h2>
+      <%= link_to post.title , post_path(post.slug_html) %>
+    </h2>
+  </div>
+  <div class="post-content">
+    <p><%= post.description %></p>
+  </div>
+  <div class="post-banner">
+    <% extract_image_urls_from_content(post.content).take(8).each do |src| %>
+      <%= image_tag src, class: "size-10" %>
+    <% end %>
+  </div>
+  <div class="post-footer">
+    <div class="meta">
+      <div class="info">
+        <%= image_tag("icon/clock2.svg", alt: "icon clock") %>
+        <span class="date"> <%= post.created_at.strftime(Settings.time.formats) %></span>
+
+        <%= image_tag("icon/eye.svg", alt: "icon view") %> 
+        <span class="date"> <%= post.view_count %></span>
+      </div>
+    </div>
+  </div>
+</div>

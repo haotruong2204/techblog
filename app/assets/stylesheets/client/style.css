@@ -699,16 +699,26 @@ a:hover {
 
 .pagination {
   margin: 30px 45px;
-  padding: 0 0 56px;
-  border-bottom: 1px solid #f2f2f2;
   width: 600px
 }
 
+.pagination ul li.active {
+  padding: 8px 6px;
+  border: 1px solid #4786D6;
+  border-radius: 50%;
+  text-align: center;
+}
+
+.pagination ul li.active a {
+  color: rgb(255 147 4);
+  padding-left: 6px;
+}
 .pagination ul {
   list-style: none;
   margin: 0;
   padding: 0;
-  height: 13px
+  height: 13px;
+  text-align: center;
 }
 
 .pagination ul li {

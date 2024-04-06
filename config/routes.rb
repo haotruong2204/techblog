@@ -5,12 +5,13 @@ Rails.application.routes.draw do
   mount Ckeditor::Engine => "/ckeditor"
   mount Sidekiq::Web => "/sidekiq"
 
-  root "client/dashboard#index"
+  root "client/posts#index"
   scope module: "client", path: "", as: "" do
     devise_for :accounts, path: "", path_names: { sign_in: "login", sign_out: "logout" }
 
-    resources :posts, param: :slug, only: [:show, :index] do
+    resources :posts, param: :slug do
       get :draft, on: :member
+      post :index, on: :collection
     end
 
     resources :comments, only: [:create, :destroy, :edit] do

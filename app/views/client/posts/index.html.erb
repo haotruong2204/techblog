@@ -1,0 +1,18 @@
+<% provide :title, "Đừng sống một đời quá nhạt" %>
+<% provide :url, "/" %>
+<% provide :description, "Ngày đó chở theo ánh mắt trong trẻo nhìn cuộc đời không một chút hoài nghi, thế giới trong đồng tử của một đứa trẻ con bao giờ cũng đẹp tuyệt." %>
+
+<div class="autopagerize_page_element">
+  <div class="content">
+    <% if @posts.present? %>
+      <%= render @posts %>
+      <div class="pagination">
+        <%= render partial: 'shared/pagination_client', locals: {pagy: @pagy} %>
+      </div>
+    <% else %>
+      <div class="post">
+        Comming soon...
+      </div>
+    <% end %>
+  </div>
+</div>

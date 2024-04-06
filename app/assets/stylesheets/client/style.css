@@ -710,7 +710,7 @@ a:hover {
 }
 
 .pagination ul li.active a {
-  color: rgb(255 147 4);
+  color: #ff9304;
   padding-left: 6px;
 }
 .pagination ul {

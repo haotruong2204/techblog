@@ -1433,7 +1433,22 @@ a.reply {
 }
 
 .code {
-  background-color: rgba(27,31,35,0.05);
+  background-color: #000000;
+  color: #c0c0c0;
+}
+
+.code code {
+  color: #00fbff;
+}
+
+.code .green {
+  color: #00f400;
+}
+
+.seri {
+  border: 1px dashed green;
+  border-radius: 4px;
+  padding: 12px;
 }
 
 .mobile ul {

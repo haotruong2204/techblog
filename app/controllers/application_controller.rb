@@ -2,6 +2,7 @@
 
 class ApplicationController < ActionController::Base
   include Pagy::Backend
+  rescue_from ActiveRecord::RecordNotFound, with: :record_not_found
 
   protect_from_forgery with: :exception
 
@@ -17,5 +18,9 @@ class ApplicationController < ActionController::Base
     return admin_root_path if resource_or_scope.is_a?(Admin)
 
     super
+  end
+
+  def record_not_found
+    render file: "#{Rails.root}/public/404", layout: true, status: :not_found
   end
 end

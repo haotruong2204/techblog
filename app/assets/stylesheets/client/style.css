@@ -382,6 +382,15 @@ a:hover {
   padding: 5px 15px 0
 }
 
+.subtitle {
+  display: flex;
+  justify-content: center;
+}
+
+.check-circle {
+  margin-left: 4px;
+}
+
 .sidebar .subtitle p a {
   font-size: 1rem;
   font-style: italic;

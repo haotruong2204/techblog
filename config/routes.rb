@@ -34,5 +34,5 @@ Rails.application.routes.draw do
     end
   end
 
-  match "*path", to: "application#render_notfound", via: :all
+  match "*path", to: "application#render_notfound", via: :all, constraints: -> (req) { req.path.exclude?('/rails/active_storage') }
 end

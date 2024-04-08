@@ -38,6 +38,7 @@
       <nav>
         <ul>
           <li>
+            <a href="https://haotruong.dev/"><span>Trang chủ</span></a>
             <% if account_signed_in? %>
               <span>Chào, <%= current_account.full_name %>!</span>
               <%= link_to destroy_account_session_path, class: "logout" do %>
@@ -60,6 +61,7 @@
         <div class="nav">
           <ul>
             <li>
+              <a href="https://haotruong.dev/"><span>Trang chủ</span></a>
               <% if account_signed_in? %>
                 <span>Chào, <%= current_account.full_name %>!</span>
                 <%= link_to destroy_account_session_path, class: "logout" do %>

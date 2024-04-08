@@ -33,4 +33,6 @@ Rails.application.routes.draw do
       delete :delete_image_attachment, on: :member
     end
   end
+
+  match "*path", to: "application#render_notfound", via: :all
 end

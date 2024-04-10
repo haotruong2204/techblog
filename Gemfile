@@ -118,3 +118,6 @@ gem "image_processing", "~> 1.2"
 gem "aws-sdk-s3", "~> 1"
 
 gem "sitemap_generator"
+
+# Crontab
+gem "whenever", require: false

@@ -44,7 +44,7 @@ class Post < ApplicationRecord
     where("created_at > ? AND created_at < ?", Time.zone.now.beginning_of_month, Time.zone.now.end_of_month).size
   }
 
-  before_save :should_generate_slug_html
+  before_save :should_generate_slug_html, :change_published_at
 
   class << self
     def ransackable_attributes _auth_object = nil
@@ -64,5 +64,9 @@ class Post < ApplicationRecord
 
   def should_generate_slug_html
     self.slug_html = "#{slug}.html"
+  end
+
+  def change_published_at
+    self.published_at = (updated_at || Time.zone.now) if visible? && published_at.blank?
   end
 end

@@ -16,7 +16,7 @@
           <div class="meta">
             <div class="info">
               <%= image_tag("icon/clock2.svg", alt: "icon clock") %> 
-              <span class="date"> <%= @post.created_at.strftime(Settings.time.formats) %></span>
+              <span class="date"><%= format_date(@post.published_at || @post.created_at) %></span>
 
               <%= image_tag("icon/eye.svg", alt: "icon view") %> 
               <span class="date"> <%= @post.view_count %></span>

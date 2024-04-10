@@ -55,7 +55,7 @@ class Admin::PostsController < Admin::BaseController
 
   def post_params
     pr = params.require(:post).permit(:title, :description, :content, :cover_image, :seo_title,
-      :seo_description, :slug, :readtime, :category_id, :view_count, tags: [])
+      :seo_description, :slug, :readtime, :category_id, :view_count, :published_at, tags: [])
     pr[:status] = params[:post][:status].to_i
     pr[:admin_id] = current_admin_admin.id
     pr

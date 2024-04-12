@@ -106,7 +106,7 @@
             as: :radio_buttons, label_method: :last,
             value_method: :first, checked: f.object.visible? ? 2 : 1 %>
           <% if f.object.published_at && f.object.hidden? %>
-            <span class="info-visible">(Hiển thị lúc <%= f.object.published_at.strftime(Settings.published_at.formats) %>)</span>
+            <span class="info-visible">(Hiển thị lúc <%= f.object.published_at.strftime(Settings.time.formats) %>)</span>
           <% end %>
         </div>
 

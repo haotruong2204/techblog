@@ -32,6 +32,8 @@ Rails.application.routes.draw do
     resources :categories, param: :slug do
       delete :delete_image_attachment, on: :member
     end
+
+    resources :accounts
   end
 
   match "*path", to: "application#render_notfound", via: :all, constraints: -> (req) { req.path.exclude?('/rails/active_storage') }

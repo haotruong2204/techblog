@@ -38,7 +38,7 @@ class Account < ApplicationRecord
   devise :database_authenticatable, :async, :rememberable, :trackable, :lockable,
     :omniauthable, :validatable, omniauth_providers: [:google_oauth2]
 
-  has_many :comments, dependent: :destroy
+  # has_many :comments, dependent: :destroy
 
   ATTRS = [:role].freeze
 
@@ -53,6 +53,16 @@ class Account < ApplicationRecord
       user.full_name = auth.info.name
       user.avatar = auth.info.image
       user.role = "normal"
+    end
+  end
+
+  class << self
+    def ransackable_attributes _auth_object = nil
+      %w[full_name email]
+    end
+
+    def ransackable_associations _auth_object = nil
+      []
     end
   end
 

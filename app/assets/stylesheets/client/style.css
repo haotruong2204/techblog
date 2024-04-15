@@ -1216,7 +1216,7 @@ a.btn {
   .sidebar .logo-title {
     padding-top: 60px
   }
-  .sidebar .logo-title .title img {
+  .sidebar .logo-title .title img.logo {
     width: 100px
   }
   .page-top {

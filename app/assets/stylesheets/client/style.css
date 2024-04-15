@@ -1510,3 +1510,21 @@ a.logout img{
 .orig-color {
   color: #d25801;
 }
+
+.sublime-text {
+  background-color: #272723;
+  color: #FD971F;
+  padding: 8px;
+}
+
+.sublime-text span.group {
+  color: #66D9EF;
+}
+
+.sublime-text span.syntax {
+  color: #F44747;
+}
+
+.sublime-text span.alias {
+  color: #B267E6;
+}

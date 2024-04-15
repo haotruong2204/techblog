@@ -1528,3 +1528,11 @@ a.logout img{
 .sublime-text span.alias {
   color: #B267E6;
 }
+
+.sublime-text span.comment-code {
+  color: #75715E;
+}
+
+.sublime-text span.text-white {
+  color: #ffff;
+}

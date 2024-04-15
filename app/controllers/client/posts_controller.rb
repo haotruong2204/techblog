@@ -19,7 +19,7 @@ class Client::PostsController < Client::BaseController
   private
 
   def load_post
-    @post = Post.find_by(slug: params[:slug])
+    @post = Post.find_by(slug: params[:slug], status: :visible)
     render file: "#{Rails.root}/public/404.html", layout: false, status: :not_found unless @post
   end
 end

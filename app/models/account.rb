@@ -46,6 +46,10 @@ class Account < ApplicationRecord
 
   before_save :set_user_name
 
+  scope :from_current_month, lambda {
+    where("created_at > ? AND created_at < ?", Time.zone.now.beginning_of_month, Time.zone.now.end_of_month).size
+  }
+
   def self.from_omniauth auth
     where(provider: auth.provider, uid: auth.uid).first_or_initialize do |user|
       user.email = auth.info.email

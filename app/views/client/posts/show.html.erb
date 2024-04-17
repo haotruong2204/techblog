@@ -35,6 +35,18 @@
         <div class="post-content">
           <%= raw @post.content %>
         </div>
+
+         <div class="comment">
+          <div id="comment_post_<%= @post.id %>" class="comment-post-id" data-post-id=<%= @post.id %>>
+            <%= render "client/posts/content_comment", post: @post %>
+          </div>
+
+          <%= render "client/comments/comment_form", { url_action: comments_path(post_id: @post.id),
+            class_input: "type_comment_#{@post.id}", class_parrent_div: "", class_d_none: "" } %>
+
+          <%= render "client/comments/modals/delete_modal" %>
+          <%= render "client/comments/modals/reply_modal" %>
+        </div>
       </div>
     </div>
   </div>

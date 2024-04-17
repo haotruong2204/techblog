@@ -1,5 +1,4 @@
-.modal-delete,
-.modal-shortcode {
+.modal-delete {
   position: fixed;
   top: 0;
   right: 0;
@@ -63,107 +62,6 @@
           color: $color-white;
           box-shadow: 0px 1px 4px #007eb0;
           line-height: 1;
-        }
-      }
-    }
-  }
-}
-
-.modal-shortcode {
-  &__centered {
-    max-width: 60rem;
-    min-height: 100%;
-    
-    .modal-content {
-      &__header {
-        @include flex(flex, space-between, center);
-        border-bottom: 1px solid $border-color;
-        padding-bottom: 1rem;
-
-        span:last-child {
-          cursor: pointer;
-        }
-      }
-
-      &__main {
-        margin-top: 1.125rem;
-        min-height: 400px;
-        border: 1px solid #f5f5f5;
-        border-radius: .5rem;
-        overflow: auto;
-        padding: 1rem;
-
-        .info-survey {
-          @include flex(flex, space-between, center);
-          font-size: .875rem;
-
-          p {
-            line-height: 1;
-            margin: 8px 0;
-            color: #202223;
-            font-weight: 600;
-          }
-
-          &__right {
-            p {
-              border: 1px solid #babfc3;
-              border-radius: 4px;
-              background: #F6F6F7;
-              height: 36px;
-              @include flex(flex, space-between, center);
-              padding: 0 8px;
-
-              img {
-                width: 14px;
-                margin-right: 8px;
-              }
-            }
-          }
-        }
-
-        .list-question {
-          margin-top: 48px;
-          max-height: 50vh;
-          overflow: auto;
-
-          table {
-            width: 100%;
-
-            thead {
-              background: #E5E5E5;
-              height: 48px;
-              border-bottom: 2px solid;
-
-              th {
-                text-align: left;
-                padding: 0 12px;
-                color: #000;
-                font-weight: 600;
-              }
-            }
-            
-            tbody {
-              tr {
-                height: 44px;
-                border-bottom: 1px solid #A3A3A3;
-
-                td {
-                  padding: 0 12px;
-
-                  &:first-child {
-                    width: 60%;
-                  }
-
-                  span:first-child {
-                    border: 1px solid $border-color;
-                    border-radius: 4px;
-                    padding: 4px 32px;
-                    cursor: pointer;
-                  }
-                }
-              }
-            }
-          }
         }
       }
     }

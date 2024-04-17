@@ -1,0 +1,17 @@
+<div class="modal-delete d-none" id="modal-delete-comment" data-controller="comment">
+  <div class="modal-delete__centered">
+    <div class="modal-content">
+      <div class="modal-content__header">
+        <span>Bạn muốn gỡ bình luận này?</span>
+      </div>
+      <div class="modal-content__confirm">
+        <div class="modal-content__confirm--cancel" data-action="click->comment#closeModal">
+          <span>Hủy</span>
+        </div>
+        <div class="modal-content__confirm--apply" data-action="click->comment#onDelete">
+          <span>Đồng ý</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -29,6 +29,7 @@
 class Post < ApplicationRecord
   strip_attributes
 
+  has_many :comments, dependent: :destroy
   has_many :ip_view_posts, dependent: :destroy
   belongs_to :category
   belongs_to :admin

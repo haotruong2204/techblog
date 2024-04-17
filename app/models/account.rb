@@ -38,7 +38,7 @@ class Account < ApplicationRecord
   devise :database_authenticatable, :async, :rememberable, :trackable, :lockable,
     :omniauthable, :validatable, omniauth_providers: [:google_oauth2]
 
-  # has_many :comments, dependent: :destroy
+  has_many :comments, dependent: :destroy
 
   ATTRS = [:role].freeze
 

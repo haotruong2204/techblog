@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  mount ActionCable.server => "/cable"
   require "sidekiq/web"
   require "sidekiq-status/web"
 
@@ -14,9 +15,8 @@ Rails.application.routes.draw do
       post :index, on: :collection
     end
 
-    resources :comments, only: [:create, :destroy, :edit] do
+    resources :comments, only: [:create, :destroy] do
       collection do
-        get :show_subcomment
         post :create_subcomment
       end
     end

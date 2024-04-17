@@ -1,17 +1,15 @@
 <% if account_signed_in? %>
-  <div class="box-comment <%= class_parrent_div %>">
+  <div class="box-comment <%= class_parrent_div %>" data-controller="comment">
     <div class="box-comment__form">
       <div class="box-comment__avatar">
-        <%= image_tag current_account.photo_url %>
+        <%= image_tag current_account.avatar %>
       </div>
-      <%= form_for :comment, url: url_action, method: :post, remote: true, data: { turbo: false } do |f| %>
-        <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
-        <%= f.text_field :content, class: class_input, placeholder:"Chém gió đi bạn ơi ..." %>
-      <% end %>
+      <input placeholder="Chém gió đi bạn ơi ..." type="text" data-post-id="<%= @post.id  %>" name="comment[content]" data-action="keypress.enter->comment#submitCreate">
     </div>
   </div>
 <% else %>
   <%= button_to account_google_oauth2_omniauth_authorize_path, method: :post, data: {turbo: "false"}, class: class_d_none do %>
-    Đăng nhập để góp gió
+    <%= image_tag("icon/log-in.svg", alt: "icon login") %> 
+    <span class="login-text">Góp gió</span>
   <% end %>
 <% end %>

@@ -106,8 +106,8 @@ Rails.application.configure do
     enable_starttls_auto: true
   }
   
-  config.action_cable.url = "wss://#{ENV['DOMAIN']}/cable"
-  config.action_cable.allowed_request_origins = [ "https//haotruong.dev" ]
+  config.action_cable.url = "wss://haotruong.dev/cable"
+  config.action_cable.allowed_request_origins = ["https://haotruong.dev"]
 
   Rails.application.configure do
     config.cache_store = :redis_cache_store, { url: ENV.fetch("REDIS_URL", "redis://localhost:6379/1") }

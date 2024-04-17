@@ -2,7 +2,7 @@ import consumer from "channels/consumer"
 
 consumer.subscriptions.create({
   channel: "CommentChannel",
-  post_id: document.querySelector(".comment-post-id").dataset.postId
+  post_id: document.querySelector(".comment-post-id")?.dataset?.postId
 }, {
   connected() {
   },

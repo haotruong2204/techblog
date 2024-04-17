@@ -50,8 +50,13 @@
     </div>
   </td>
   <td>
-    <div class="post__view">
+    <div class="post__slug">
+      <span><img src="<%= asset_path("icon/eye-admin.svg") %>" alt="icon-slug"></span>
       <span><%= post.view_count %></span>
+    </div>
+    <div class="post__slug">
+      <span><img src="<%= asset_path("icon/comment-admin.svg") %>" alt="icon-slug"></span>
+      <span><%= post.comments.count %></span>
     </div>
   <td>
     <div class="post__action d-none">

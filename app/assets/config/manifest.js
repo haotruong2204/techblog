@@ -4,4 +4,4 @@
 //= link_tree ../../../vendor/javascript .js
 //= link channels/consumer.js
 //= link channels/index.js
-//= link channels/messages_channel.js
+//= link channels/comment_channel.js

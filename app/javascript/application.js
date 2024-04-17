@@ -1,11 +1,13 @@
 // Configure your import map in config/importmap.rb. Read more: https://github.com/rails/importmap-rails
 import "@hotwired/turbo-rails"
 import { Turbo } from "@hotwired/turbo-rails"
+import "@rails/actioncable"
 import "controllers"
 import "jquery"
 import "lodash"
 import "select2"
 import "flatpickr"
+import "channels"
 
 Turbo.session.drive = false
 
@@ -50,4 +52,4 @@ window.onload = function() {
     $('.button_container').toggleClass('active');
     $('.menu').toggleClass('open');
   });
-};import "channels"
+};

@@ -20,7 +20,7 @@
     <div class="lh-1 mb-4 pl-5 color-green pt-4">
       <span class="reply reply_comment_<%= comment.id %>" data-action="click->comment#openModalReply"><b>Phản hồi</b></span>
       <% if comment.account.id == current_account.id || current_account.admin? %>
-        <span class="action-delete" class="pl-2" data-action="click->comment#openModal" data-post-id=<%= comment.post.id %> data-comment-id="<%= comment.id %>"><b>Gỡ</b></span>
+        <span class="action-delete pl-2" data-action="click->comment#openModal" data-post-id=<%= comment.post.id %> data-comment-id="<%= comment.id %>"><b>Gỡ</b></span>
       <% end %>
     </div>
   <% end %>

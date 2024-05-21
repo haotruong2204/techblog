@@ -15,7 +15,7 @@
     <meta property="fb:app_id" content="3718056755116878" /> 
     <meta property="og:title" content="<%= yield(:title) %>">
     <meta property="og:url" content="https://haotruong.dev<%= yield(:url) %>" />
-    <meta property="og:image" content="<%= yield(:image).present? ? "https://haotruong.dev#{yield(:image)}" : "https://haotruong.dev#{asset_path("rails.jpg")}" %>">
+    <meta property="og:image" content="<%= yield(:image).present? ? "#{ENV['S3_URL_PREFIX']}#{yield(:image)}" : "https://haotruong.dev#{asset_path("rails.jpg")}" %>">
     <meta property="og:description" content="<%= yield(:description) %>">
     <meta property="og:type" content="<%= yield(:type) %>">
     <link rel="canonical" href="https://haotruong.dev/" />
